@@ -1,0 +1,48 @@
+{
+  "name": "yelp-clone",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "axios": "^1.6.7",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "express-rate-limit": "^5.3.0",
+    "google-map-react": "^2.1.10",
+    "morgan": "^1.10.0",
+    "react": "^16.9.0",
+    "react-dom": "^16.9.0",
+    "react-scripts": "^5.0.1",
+    "urijs": "^1.19.7"
+  },
+  "devDependencies": {
+    "jest-dev-server": "^10.0.0",
+    "puppeteer": "^1.19.0"
+  },
+  "jest": {
+    "globalSetup": "./global-setup.js",
+    "globalTeardown": "./global-teardown.js"
+  },
+  "main": "src/server.js",
+  "scripts": {
+    "backend": "node src/server.js",
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}

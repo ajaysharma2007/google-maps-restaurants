@@ -1,0 +1,14 @@
+.marker {
+  width: 32px;
+  height: 32px;
+  font-size: 32px;
+  color: #f7484e;
+}
+
+
+.marker-center {
+  width: 32px;
+  height: 32px;
+  font-size: 32px;
+  color: #1b09d8;
+}
