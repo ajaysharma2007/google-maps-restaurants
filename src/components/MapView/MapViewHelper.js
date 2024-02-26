@@ -15,22 +15,14 @@ const useMapViewHelper = (props) => {
 
   useEffect(() => {
     if (!state.map) return;
-    console.log("Adding zoom_changed event listener...");
     listener = state.map.addListener("zoom_changed", handleZoomChange);
 
     return () => {
-      console.log("Removing zoom_changed event listener...");
       state.mapApi.event.removeListener(listener);
     };
   }, [state.map, mapMarkers, clusteredMarkers]);
 
-  useEffect(() => {
-    console.log(clusteredMarkers);
-    console.log("clusteredMarkers in use effect - end");
-  }, [clusteredMarkers]);
-
   function apiHasLoaded(mapInstance, maps) {
-    console.log("Resetting map in API has loaded");
     setState({
       map: mapInstance,
       mapApi: maps,
@@ -52,22 +44,14 @@ const useMapViewHelper = (props) => {
       lng: place[0].geometry.location.lng(),
     };
 
-    console.log("resetting map markers on place change");
     props.setLoc(latlng);
     props.setBiz([]);
     setMapMarkers([]);
   };
 
   function handleZoomChange(newMarkers) {
-    console.log("In handle zoom change, the clusteredMarkers are : ");
-    console.log("clusteredMarkers = ");
-    console.log(clusteredMarkers);
-    console.log("mapMarkers = ");
-    console.log(mapMarkers);
-    console.log(newMarkers);
     const bounds = state.map.getBounds();
     if (!bounds) {
-      console.log("Empty map bounds. Returning....");
       return;
     }
 
@@ -123,7 +107,6 @@ const useMapViewHelper = (props) => {
         Math.pow(markerPixelPoint.x - otherMarkerPixelPoint.x, 2) +
           Math.pow(markerPixelPoint.y - otherMarkerPixelPoint.y, 2)
       );
-      console.log(distance);
       if (distance < overlapThreshold) {
         return true;
       }
@@ -133,11 +116,6 @@ const useMapViewHelper = (props) => {
   }
 
   function displayClusteredMarkers(clusters) {
-    console.log("Current Cluster Length : " + clusters.length);
-    console.log(
-      "clusteredMarkers Length in display: " + clusteredMarkers.length
-    );
-    console.log(clusteredMarkers);
     clusteredMarkers.forEach((marker) => marker.setMap(null));
     setClusteredMarkers([]);
 
@@ -175,9 +153,6 @@ const useMapViewHelper = (props) => {
   }
 
   function renderRestaurants() {
-    console.log("Loading marker data");
-    console.log("props.biz");
-    console.log(props.biz);
     const newMarkers = props.biz.map((marker) => {
       return new state.mapApi.Marker({
         position: {
