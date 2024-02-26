@@ -55,6 +55,7 @@ const useMapViewHelper = (props) => {
       return;
     }
 
+    newMarkers = newMarkers === undefined ? [] : newMarkers;
     const iterableMarkers = mapMarkers.length === 0 ? newMarkers : mapMarkers;
 
     const clusters = groupMarkersIntoClustersOnSize(iterableMarkers);
