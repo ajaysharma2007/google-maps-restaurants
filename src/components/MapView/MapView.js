@@ -6,15 +6,17 @@ import UseMyLocation from "../UseMyLocation/UseMyLocation";
 import GoogleMapReact from "google-map-react";
 import useMapViewHelper from "./MapViewHelper";
 import { MapMarker } from "../MapMarker/MapMarker";
+import { render } from "react-dom";
 
 export default function MapView(props) {
   const {
     state,
     apiHasLoaded,
     addPlace,
-    mapChildren,
+    getMapChildren,
     mapChildrenOriginal,
     mainLocation,
+    renderRestaurants,
   } = useMapViewHelper(props);
 
   return (
@@ -29,13 +31,13 @@ export default function MapView(props) {
         yesIWantToUseGoogleMapApiInternals
         onGoogleApiLoaded={({ map, maps }) => apiHasLoaded(map, maps)}
       >
-        {mainLocation}
-        {mapChildren}
+        {renderRestaurants()}
+        {/* {state.mapApiLoaded && getMapChildren()} */}
       </GoogleMapReact>
       <div className="SearchBoxContainer">
         {state.mapApiLoaded && (
           <SearchBox
-            map={state.mapInstance}
+            map={state.map}
             mapApi={state.mapApi}
             addplace={addPlace}
           />

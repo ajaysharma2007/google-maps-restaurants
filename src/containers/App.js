@@ -39,7 +39,7 @@ function App() {
     <div className="App">
       <HighlightedContextProvider>
         <ListView biz={biz} />
-        <MapView biz={biz} loc={loc} setLoc={setLoc} />
+        <MapView biz={biz} loc={loc} setLoc={setLoc} setBiz={setBiz} />
       </HighlightedContextProvider>
     </div>
   );

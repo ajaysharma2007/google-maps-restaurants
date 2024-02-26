@@ -30,7 +30,7 @@ const SearchBox = ({ map, mapApi, addplace }) => {
     }
 
     addplace(selected);
-    searchInputRef.current.blur();
+    // searchInputRef.current.blur();
   };
 
   const clearSearchBox = () => {
